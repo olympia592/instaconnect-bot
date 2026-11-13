@@ -11,3 +11,4 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     else:
         await update.message.reply_text(f"You said: {update.message.text}\nTry /profile {update.message.text}")
+        
