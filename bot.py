@@ -12,7 +12,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         ["Help", "About"],
         ["Ping", "Instagram"],
-        [KeyboardButton("Open Mini App", web_app=WebAppInfo(url="https://example.com"))]
+        [KeyboardButton("Open Mini App", web_app=WebAppInfo(url="https://olympia592.github.io/instaconnect-bot/"))]
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     await update.message.reply_text(
