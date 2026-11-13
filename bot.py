@@ -1,6 +1,6 @@
 import os
 import logging
-from telegram import Update, ReplyKeyboardMarkup
+from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
 logging.basicConfig(level=logging.INFO)
@@ -9,7 +9,11 @@ logger = logging.getLogger(__name__)
 TOKEN = os.getenv("BOT_TOKEN")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [["Help", "About"], ["Ping", "Instagram"]]
+    keyboard = [
+        ["Help", "About"],
+        ["Ping", "Instagram"],
+        [KeyboardButton("Open Mini App", web_app=WebAppInfo(url="https://example.com"))]
+    ]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     await update.message.reply_text(
         "Welcome to InstaConnect!\n\n"
