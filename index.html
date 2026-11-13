@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InstaConnect Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f0f;
+      color: white;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 { color: #e1306c; }
+    .card {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 15px 0;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background: #e1306c;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>InstaConnect</h1>
+  <p>Your Instagram tools inside Telegram</p>
+
+  <div class="card">
+    <h3>Look up a profile</h3>
+    <input id="username" placeholder="Enter Instagram username" />
+    <button onclick="lookup()">View Profile</button>
+    <p id="result"></p>
+  </div>
+
+  <div class="card">
+    <h3>Quick links</h3>
+    <button onclick="openInstagram()">Open Instagram</button>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    function lookup() {
+      const user = document.getElementById('username').value.trim().replace('@','');
+      if (!user) return;
+      document.getElementById('result').innerHTML = 
+        `<a href="https://www.instagram.com/${user}" target="_blank" style="color:#e1306c">Open @${user} on Instagram</a>`;
+    }
+
+    function openInstagram() {
+      window.open('https://www.instagram.com', '_blank');
+    }
+  </script>
+</body>
+</html>
